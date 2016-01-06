@@ -2,9 +2,8 @@ import theano
 from theano import tensor as T
 from theano.sandbox.rng_mrg import MRG_RandomStreams as RandomStreams
 import numpy as np
-from load import mnist
 
-from maunaloa import load_mauna
+#from maunaloa import load_mauna
 
 srng = RandomStreams()
 
@@ -53,7 +52,6 @@ def model(X,
           b_h, b_h2, b_h3, b_h4, b_h5,
           p_drop=0.5, activation=rectify):
     X = dropout(X, p_drop)
-    # rescale weights by dropout factor
     h = activation(T.dot(X, w_h) + b_h)
     h = dropout(h, p_drop)
     h2 = activation(T.dot(h, w_h2) + b_h2)
